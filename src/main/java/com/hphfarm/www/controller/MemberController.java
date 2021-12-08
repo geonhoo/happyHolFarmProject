@@ -625,7 +625,9 @@ public class MemberController {
 	// 회원 이메일 검증하기
 	@ResponseBody
 	@RequestMapping("/sendEmail")
-	public String sendEmail(@RequestParam String u_id, @RequestParam String u_email, @RequestParam String u_email2)
+	public String sendEmail(@RequestParam String u_id, 
+			@RequestParam String u_email, 
+			@RequestParam String u_email2)
 			throws Exception {
 		// 이메일 전송 메소드
 		String emailPw = emailService.sendEmail(u_id, u_email, u_email2);
@@ -698,7 +700,6 @@ public class MemberController {
 		Map<String, Object> map = memberService.regModifyBoardOne(u_no);
 		model.addAttribute("map", map);
 		return "member/my_exp_regmodify";
-
 	}
 
 	// 마이페이지 : 농장주 회원 체험프로그램 수정하기
@@ -726,7 +727,6 @@ public class MemberController {
 			}
 		}
 		int result = memberService.exp_modify(expDto);
-
 		return "member/my_exp_regmodify_ok";
 	}
 

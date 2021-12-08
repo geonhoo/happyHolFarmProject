@@ -80,24 +80,20 @@ public class ExpServiceImpl implements ExpService {
 		int result = expMapper.insertExp_RegWrite(expDto);
 		return result;
 	}
-	
-    // 체험 상세보기 뷰 
-
-	@Override
-	public Map<String, Object> boardOne(int e_no) {
-		Map<String, Object> map = new HashMap<String, Object>();
-		
-		ExpDto eDto = expMapper.selectBoardOne(e_no);
-
-		map.put("eDto", eDto);
-		
-		return map;
-	}
 	// 체험등록 1개이상 등록 불가 아이디당 1개
 	@Override
 	public int expRegCheck(int u_no) {
 		int result = expMapper.SelectExpRegCheck(u_no);
 		return result;
+	}
+	
+    // 체험 상세보기 뷰 
+	@Override
+	public Map<String, Object> boardOne(int e_no) {
+		Map<String, Object> map = new HashMap<String, Object>();	
+		ExpDto eDto = expMapper.selectBoardOne(e_no);
+		map.put("eDto", eDto);		
+		return map;
 	}
 	// 체험 프로그램 예약 결제
 	@Override

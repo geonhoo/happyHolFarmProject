@@ -24,11 +24,11 @@ public interface ManagerMapper {
 		// 관리자페이지 : 체험 프로그램 하단 넘버링하기 - 총 게시글 수
 		int man_exp_selectListCount(String category, String searchword);
 
-		// 관리자페이지 : 농장주가 수정/등록한 체험 승인여부 확인하기
-		List<ExpDto> man_exp_regiSelectList(int startrow, int endrow, String category, String searchword);
-
 		// 관리자페이지 : 체험 프로그램 신청 하단 넘버링하기 - 총 게시글 수
 		int man_exp_selectRegiListCount(String category, String searchword);
+		
+		// 관리자페이지 : 농장주가 수정/등록한 체험 승인여부 확인하기
+		List<ExpDto> man_exp_regiSelectList(int startrow, int endrow, String category, String searchword);
 
 		// 관리자 페이지 : 승인하기위한 체험 프로그램 자세히 보기
 		ExpDto selectMan_exp_viewBoardOne(int e_no);

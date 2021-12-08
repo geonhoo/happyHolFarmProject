@@ -126,7 +126,7 @@ public interface MemberMapper {
 	
 	// ========================== 최건호 =========================
 
-	// 유저회원 회원가입하기
+		// 유저회원 회원가입하기
 		int insertUserReg(MemberDto memberDto);
 
 		// 농장주 회원 회원가입하기

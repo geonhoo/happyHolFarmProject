@@ -417,6 +417,7 @@
 	<select id="selectMyReceiveMoney" resultType="com.hphfarm.www.dto.ExpDto">
 		 select sum(p.py_price) totalPrice from pay p, expres e where p.py_no=e.py_no and e.e_no=#{e_no}
 	</select>
+	
 	<!-- 마이페이지 : 마이페이지에서 나의 체험 예약 취소하기 -->
 	<update id="updateCancelExpReser">
 		merge into pay p 

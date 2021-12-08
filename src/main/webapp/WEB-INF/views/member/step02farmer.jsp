@@ -81,8 +81,7 @@
             
             
        });
-       // 정규 표현식
-      
+       // 정규 표현식     
        $(function(){
     	   $("#u_id").keyup(function(){
                var patternId=/^[a-zA-Z]{1}[a-zA-Z0-9]{3,15}$/;              
@@ -252,7 +251,7 @@
 	function sendCheck(){
 		alert("이메일 인증이 확인되었습니다.");
 	}
-	// 닉네임 중복체크
+	// 아이디 중복체크
 	function fn_idChk(){
 		$.ajax({
 			url:"/member/idChk",

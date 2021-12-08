@@ -70,8 +70,7 @@ $(document).ready(function(){
          var arr =  data.response.body.items.item;
           var arr1 =  data.response.body.items.item.numEf;
           console.log(arr1);
-          var chtml = "";
-          
+          var chtml = "";    
           for(var i in arr){
             chtml+="<tr>";
             if(arr[i].regId=='11B10101'){

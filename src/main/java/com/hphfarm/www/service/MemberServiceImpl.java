@@ -342,7 +342,6 @@ public class MemberServiceImpl implements MemberService {
 		@Override
 		public Map<String, Object> regModifyBoardOne(int u_no) {
 			Map<String, Object> map = new HashMap<String, Object>();
-
 			ExpDto eDto = memberMapper.selectRegModifyBoardOne(u_no);
 			map.put("eDto", eDto);
 			return map;
@@ -359,7 +358,6 @@ public class MemberServiceImpl implements MemberService {
 		@Override
 		public int infoUpdet(MemberDto memberDto) {
 			int result = memberMapper.updateMyInfo(memberDto);
-
 			return result;
 		}
 
@@ -387,6 +385,7 @@ public class MemberServiceImpl implements MemberService {
 			int count = memberMapper.expReserCount(e_no);
 			// 마이페이지 : (농장주)가 보는 유저의 신청내역 보기 에서 총 결제 합 뽑기
 			ExpDto eDto = memberMapper.selectMyReceiveMoney(e_no);
+			
 			eDto.setReserNumber(count);
 			eDto.setExpBenefit((int)(eDto.getTotalPrice()*0.8));
 			List<ExpDto> list = memberMapper.myExpBookList(u_no,e_no);

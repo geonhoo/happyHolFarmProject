@@ -78,16 +78,16 @@
 		sysdate
 		)
 	</insert>
+	<!-- 체험등록 1개이상 등록 불가 아이디당 1개 -->
+	<select id="SelectExpRegCheck" resultType="int">
+		select count(*) from exp where u_no=#{u_no}
+	</select>
  	<!-- 체험 상세보기 뷰 -->
 	<select id="selectBoardOne" resultType="com.hphfarm.www.dto.ExpDto">
 		select * from exp e,users u,farmreg f
 		where e.e_no=#{e_no}
 		and u.u_no=f.u_no
 		and u.u_no=e.u_no			
-	</select>
-	<!-- 체험등록 1개이상 등록 불가 아이디당 1개 -->
-	<select id="SelectExpRegCheck" resultType="int">
-		select count(*) from exp where u_no=#{u_no}
 	</select>
 	<!-- 체험 프로그램 예약 결제 -->
 	<insert id="insertPayExp">

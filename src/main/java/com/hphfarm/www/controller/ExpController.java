@@ -54,16 +54,14 @@ public class ExpController {
 			return "exp/exp_Reg";
 		}
 	}
-
+	
 	// (농장주)체험등록 글쓰기
-
 	@RequestMapping("/exp_RegWrite")
 	public String exp_RegWrite(ExpDto expDto, MemberDto memberDto, @RequestPart MultipartFile file,
 			HttpServletRequest request, Model model) {
-
 		HttpSession session = request.getSession();
 		int u_no = (int) session.getAttribute("session_uno");
-
+		
 		expDto.setU_no(u_no);
 		String newFileName = "";
 		if (file.getSize() != 0) {
@@ -79,12 +77,10 @@ public class ExpController {
 			// 파일 업로드
 			try {
 				file.transferTo(f);
-
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
-
 		model.addAttribute("u_no", u_no);
 		// 파일이름 expDto에 저장
 		expDto.setE_thumb(newFileName);

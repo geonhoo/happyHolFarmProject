@@ -33,13 +33,35 @@ public class ManagerServiceImpl implements ManagerService {
 
 	// =========================== 최건호 ==============================
 	// 체험 관리자
+	
+	// 관리자페이지 : 농장주가 수정/등록한 체험 승인여부 확인하기
+		@Override
+		public Map<String, Object> man_exp_regi_list(NumberDto numberDto) {
+			Map<String, Object> map = new HashMap<String, Object>();
+			// 넘버링 메소드 호출함
+			NumberDto nDto = numbering(numberDto, 10);
+			// 게시글 가져오기
+			List<ExpDto> list = managerMapper.man_exp_regiSelectList(nDto.getStartrow(), nDto.getEndrow(),
+					nDto.getCategory(), nDto.getSearchword());
+			map.put("list", list);
+			map.put("nDto", nDto);
+			return map;
+		}
+		// 관리자 페이지 : 승인하기위한 체험 프로그램 자세히 보기
+		@Override
+		public Map<String, Object> man_exp_viewBoardOne(int e_no) {
+			Map<String, Object> map = new HashMap<String, Object>();
+			ExpDto eDto = managerMapper.selectMan_exp_viewBoardOne(e_no);
+			map.put("eDto", eDto);
+			return map;
+		}
+		
 		// 관리자 페이지 : 승인하기위한 체험 프로그램 승인 하기
 		@Override
 		public int expRegiApprUpdate(int e_no) {
 			int result = managerMapper.BoardExpRegiApprUpdate(e_no);
 			return result;
 		}
-
 		// 관리자 페이지 : 승인하기위한 체험 프로그램 반려 하기
 		@Override
 		public int expRegiDelete(int e_no) {
@@ -47,15 +69,7 @@ public class ManagerServiceImpl implements ManagerService {
 			return result;
 		}
 
-		// 관리자 페이지 : 승인하기위한 체험 프로그램 자세히 보기
-		@Override
-		public Map<String, Object> man_exp_viewBoardOne(int e_no) {
-			Map<String, Object> map = new HashMap<String, Object>();
-			ExpDto eDto = managerMapper.selectMan_exp_viewBoardOne(e_no);
-			map.put("eDto", eDto);
 
-			return map;
-		}
 
 		// 관리자페이지 : 체험 목록 확인하기 >> 체험 게시글 전체 가져오기
 		@Override
@@ -67,22 +81,6 @@ public class ManagerServiceImpl implements ManagerService {
 			// 게시글 가져오기
 			List<ExpDto> list = managerMapper.man_exp_selectList(nDto.getStartrow(), nDto.getEndrow(), nDto.getCategory(),
 					nDto.getSearchword());
-			map.put("list", list);
-			map.put("nDto", nDto);
-
-			return map;
-		}
-
-		// 관리자페이지 : 농장주가 수정/등록한 체험 승인여부 확인하기
-		@Override
-		public Map<String, Object> man_exp_regi_list(NumberDto numberDto) {
-			Map<String, Object> map = new HashMap<String, Object>();
-			// 넘버링 메소드 호출함
-			NumberDto nDto = numbering(numberDto, 10);
-
-			// 게시글 가져오기
-			List<ExpDto> list = managerMapper.man_exp_regiSelectList(nDto.getStartrow(), nDto.getEndrow(),
-					nDto.getCategory(), nDto.getSearchword());
 			map.put("list", list);
 			map.put("nDto", nDto);
 
